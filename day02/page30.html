@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #center {
+            padding: 30px;
+            width: 740px;
+            height: 300px;
+            background: beige;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #top2 {
+            border: 20px dotted blue;
+            box-shadow: 10px 10px yellow;
+            background: black;
+            color: yellow;
+            border-radius: 100px 10px;
+            width: 250px;
+            height: 100px;
+            position: fixed;
+            top: 5px;
+            right: 5px;
+        }
+
+        #total {
+            width: 800px;
+            height: 800px;
+            background: lightcyan;
+        }
+
+        body {
+            background: pink;
+        }
+
+        div {
+            font-size: 15px;
+            font-weight: bold;
+            color: blue;
+        }
+
+        #top {
+            width: 800px;
+            height: 100px;
+            background: lime;
+            padding: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        li {
+            width: 70px;
+            height: 20px;
+            list-style: none;
+            float: left;
+            padding: 15px;
+        }
+
+        a:hover {
+            background: red;
+        }
+
+        li:last-child {
+            border-radius: 0 50px 50px 0;
+        }
+
+        li:first-child {
+            border-radius: 50px 0 0 50px;
+        }
+
+        li:nth-child(2n) {
+            background: orange;
+        }
+
+        li:nth-child(2n+1) {
+            background: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="total">
+        <div id="top">
+            <ul>
+                <li>
+                    <!--  a 컨트롤 + 스페이스바 -->
+                    <a href="page20.html">회원가입</a>
+                </li>
+                <li>
+                    <!--  a 컨트롤 + 스페이스바 -->
+                    <a href="page10.html">제품정보</a>
+                </li>
+                <li>
+                    <!--  a 컨트롤 + 스페이스바 -->
+                    <a href="page30.html">게시판</a>
+                </li>
+                <li>
+                    <!--  a 컨트롤 + 스페이스바 -->
+                    <a href="page40.html">장바구니</a>
+                </li>
+            </ul>
+        </div>
+        <div id="top2">
+            고정된 화면 보이는 부분..장바구니..
+        </div>
+        <div id="center">
+            <table border="1" width="400px" height="200px">
+                <tr bgcolor="pink">
+                    <td colspan="2" align="center">
+                        🍇 문희는 포도가 먹고시푼데... 🍇 
+                    </td>
+                </tr>
+                <tr>
+                    <td>문의명</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>작성자</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>전화번호</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>내용</td>
+                    <td><textarea style rows="10" cols="30"></textarea></td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center">
+                        <button>글쓰기 저장</button>
+                        <button>작성 완료</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
