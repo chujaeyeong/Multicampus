@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //1. 입력-입력한 값 가지고 오기
+        
+        function tour() {
+        space = document.getElementById('space').value
+        month = document.getElementById('month').value
+        choice = document.getElementById('choice').value
+        money = document.getElementById('choice').value
+
+        if (choice == "비행기") {
+            money = 30000
+        } else if (choice == "버스") {
+            money = 20000
+        } else if (choice == "자가용") {
+            money = 50000
+        }
+        //2. 처리-결제금액 계산해주기
+        text = "나는 " + month + "에 " + space + "으로 " + choice + "를 타고 갈 거예요. 비용은" + money + "원"
+
+        //3. 출력-결과를 출력 
+        result_tag = document.getElementById('result')
+        result_tag.innerHTML = text
+        }
+        
+    </script>
+</head>
+<body>
+    여행 가고 싶은 곳: <input type="text" value="부산" id="space"> <br>
+    몇월에 갈까요: <input type="text" value="1" id="month"> <br>
+    무얼 타고 갈까요: 비행기, 버스, 자가용 
+    <input type="text" value="비행기"  id="choice"> <br>
+    <!-- 경비 : <input type="text" value="1"  id="money"> <br> -->
+    <button onclick="tour()">여행 계획 버튼</button>
+    <div id="result">
+        <!-- 나는 1월에 부산으로 비행기를 타고 여행을 갈 거예요. 비용은 30000원 -->
+    </div>
+</body>
+</html>
