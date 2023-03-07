@@ -1,0 +1,33 @@
+package 자바DB연결;
+
+import java.util.Scanner;
+
+public class 게시판수정하기 {
+
+	public static void main(String[] args) {
+		
+		// 입력해보자! 
+		Scanner sc = new Scanner(System.in);
+		System.out.println("수정하고 싶은 게시물의 no을 입력하고, / 수정 content 를 입력하세요. ");
+		int no = sc.nextInt();
+		String content = sc.next();
+		
+		
+		BbsDAO dao = new BbsDAO(); 
+		dao.update(no, content);  
+		
+		// 1. JDBC 4단계 정리 
+		// 드라이버 설정 -> DB연결 -> SQL문 객체로 만들고, -> SQL문 전송 
+		
+		// 2. DAO에 주로 넣는 기능 4가지 
+		
+		// 3. DAO : Date Access Object => DML - CRUD - insert, select, update, delect
+		
+		// 4. create(insert문)
+		
+		// 5. ? (물음표)
+		
+
+	}
+
+}
