@@ -5,7 +5,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.util.Locale;
 
-public class MemberDAO2 {
+import 화면DB연결.MemberVO;
+
+public class MemberDAO3 {
 	
 	public int delete(String id) {
 		int result = 0;
@@ -48,8 +50,10 @@ public class MemberDAO2 {
 	}
 	
 	
+	// 1. 가방을 받아서 저장해두자. 
+	// 2. 필요할 때 가방에서 값들을 하나씩 꺼내자. 
 	
-	public int update(String id, String tel) {
+	public int update(MemberVO bag) {
 		
 		int result = 0;
 		
@@ -73,8 +77,8 @@ public class MemberDAO2 {
 			// PrepareStatement가 SQL부품!! 
 			String sql = "update hr.MEMBER set tel = ? where id = ?";
 			PreparedStatement ps = con.prepareStatement(sql); // con부품으로 sql스트링에 있는 것 sql부품으로 만들어주세요. 
-			ps.setString(1, tel);
-			ps.setString(2, id);
+			ps.setString(1, bag.getTel());
+			ps.setString(2, bag.getId());
 			System.out.println("3. SQL문 부품(객체)으로 만들어주기.");
 			
 			// 4. SQL문을 전송한다. 
@@ -92,7 +96,8 @@ public class MemberDAO2 {
 	
 
 	//public void add2() {
-		public int insert(String id, String pw, String name, String tel) {
+		public int insert(MemberVO bag) {
+			// 1. 가방을 받아서 변수에 넣어주세요. 
 			int result = 0;
 			
 			try {
@@ -123,10 +128,11 @@ public class MemberDAO2 {
 				//con부품으로 sql스트링에 있는 것 SQL부품으로 만들어주세요.
 				//R빼고, 인덱스 0부터 시작!!
 				//유일하게 db은 인덱스가 1부터 시작!!
-				ps.setString(1, id); //ps.setInt(1, no);
-				ps.setString(2, pw);
-				ps.setString(3, name);
-				ps.setString(4, tel);
+				// 2. 가방에서 값들을 하나씩 꺼내쓰세요 
+				ps.setString(1, bag.getId()); //ps.setInt(1, no);
+				ps.setString(2, bag.getPw());
+				ps.setString(3, bag.getName());
+				ps.setString(4, bag.getTel());
 				//==> insert into hr.MEMBER values ('a','a','a','a');
 				System.out.println("3. SQL문 부품(객체)으로 만들어주기 성공.");
 				
