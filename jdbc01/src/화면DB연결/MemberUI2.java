@@ -117,6 +117,38 @@ public class MemberUI2 {
 
 			} // action
 		}); // b3
+		
+		// MemberVO bag = new MemberVO();
+		// 벽돌 돌1 = new 벽돌틀()
+		// 벽돌 돌2 = new 벽돌틀()
+		
+		// 회원검색처리
+				b4.addActionListener(new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						System.out.println("회원탈퇴 처리");
+						String id = t1.getText();
+
+						MemberDAO3 dao = new MemberDAO3();
+						MemberVO bag = dao.one(id); // MemberVO
+						if (bag != null) {
+							t2.setText(bag.getPw());
+							t3.setText(bag.getName());
+							t4.setText(bag.getTel());
+							t2.setBackground(Color.lightGray);
+							t3.setBackground(Color.lightGray);
+							t4.setBackground(Color.lightGray);
+						} else {
+							JOptionPane.showMessageDialog(f, "검색결과 없음!");
+							t2.setText("");
+							t3.setText("");
+							t4.setText("");
+						}
+						
+
+					} // action
+				}); // b4
 
 		// f에 위에 있는 요소들을 add로 붙여주자
 		// 붙이는 순서대로 물 흐르듯이 붙여주고싶다!
