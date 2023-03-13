@@ -54,6 +54,7 @@ public class BookDAO {
 		return result;
 	}
 
+	
 	public int update(BookVO bag) {
 
 		int result = 0;
@@ -97,6 +98,7 @@ public class BookDAO {
 		return result;
 	}
 
+	
 	public int delete(BookVO bag) {
 
 		int result = 0;
@@ -139,6 +141,7 @@ public class BookDAO {
 		return result;
 	}
 
+	
 	public BookVO one(int bookId) {
 		ResultSet rs = null; // 항목명 + 결과 데이터를 담고 있는 테이블
 		// 기본형 정수/실수/문자/논리 만 값으로 초기화
@@ -197,75 +200,284 @@ public class BookDAO {
 
 		return bag;
 	}
-	
-	
+
+	// 전체 BookList 
 	public ArrayList<BookVO> list() {
-		ResultSet rs = null; //항목명 + 결과 데이터를 담고 있는 테이블 
-		
+		ResultSet rs = null; // 항목명 + 결과 데이터를 담고 있는 테이블
+
 		ArrayList<BookVO> list = new ArrayList<>();
-		
+
 		BookVO bag = null;
 		try {
 			// 1.오라클 11g와 연결한 부품 설정
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			System.out.println("1. 오라클과 자바 연결할 부품 설정 성공.");
-			Locale.setDefault(Locale.US); //맥 locale에러나신 분들만!!!
-			
-			// 2.오라클 11g에 연결해보자.(java --- oracle) 
+			Locale.setDefault(Locale.US); // 맥 locale에러나신 분들만!!!
+
+			// 2.오라클 11g에 연결해보자.(java --- oracle)
 			String url = "jdbc:oracle:thin:@localhost:1523:xe";
 			String user = "system";
 			String password = "oracle";
-			Connection con = DriverManager.getConnection(url, user, password); //Connection
-			//String data = JOptionPane.showInputDialog("이름입력"); //String, 임아무개 
+			Connection con = DriverManager.getConnection(url, user, password); // Connection
+			// String data = JOptionPane.showInputDialog("이름입력"); //String, 임아무개
 			System.out.println("2. 오라클 연결 성공.");
-			
-			//ipaddress ==> InetAddress
-			//String url = "http://wwww.naver.com";
-			//URL u = new URL(url);
-			//자바는 부품조립식이여서,String에 넣은 문자열을 특정한 부품으로 인식하지 못함.
-			//특정한 부품으로 인식하려면 그 부품으로 만들어주어야 한다.
-			//SQL부품으로 만들어주어야 함.
-			//PreparedStatement가 SQL부품!!
-			
-			String sql = "select * from hr.BOOK";
-			PreparedStatement ps = con.prepareStatement(sql); //PreparedStatement
 
+			// 3. SQL문을 만든다.
+			// 자바는 부품조립식이어서, String에 넣은 문자열을 특정한 부품으로 인식하지 못함.
+			// 특정한 부품으로 인식하려면 그 부품으로 만들어주어야 한다.
+			// SQL부품으로 만들어주어야함.
+			// PrepareStatement가 SQL부품!!
+			String sql = "select * from hr.BOOK";
+			PreparedStatement ps = con.prepareStatement(sql); // PreparedStatement
+
+			// 4. SQL문을 전송한다.
 			System.out.println("3. SQL문 부품(객체)으로 만들어주기 성공.");
-			
-			rs = ps.executeQuery(); //select문 전송시  
+
+			rs = ps.executeQuery(); // select문 전송시
 			System.out.println("4. SQL문 오라클로 보내기 성공.");
-			while(rs.next()) { //검색결과가 있는지 여부는 rs.next() 
-				//true이면 있다라는 의미, false이면 없다라는 의미 
-				//1. 검색경로가가 있으면, 
-				//2. 각 컬럼에서 값들을 꺼내오자. 
+			while (rs.next()) { // 검색결과가 있는지 여부는 rs.next()
+				// true이면 있다라는 의미, false이면 없다라는 의미
+				// 1. 검색경로가가 있으면,
+				// 2. 각 컬럼에서 값들을 꺼내오자.
+				System.out.println("검색결과 있음. 성공!");
 				String bookId = rs.getString(1);
 				int bookId2 = Integer.parseInt(bookId);
 				String bookTitle = rs.getString(2);
 				String bookAuthor = rs.getString(3);
 				String bookOwner = rs.getString(4);
 
-				//검색결과를 검색화면 UI부분을 주어야 함.
-				//3. 가방을 만들자.
+				// 검색결과를 검색화면 UI부분을 주어야 함.
+				// 3. 가방을 만들자.
 				bag = new BookVO();
-				
+
 				bag.setBookId(bookId2);
 				bag.setBookTitle(bookTitle);
 				bag.setBookAuthor(bookAuthor);
 				bag.setBookOwner(bookOwner);
-				
-				//4. list에 bag을 추가해주자.
+
+				// 4. list에 bag을 추가해주자.
 				list.add(bag);
 			}
-			//System.out.println(result);
+			// System.out.println(result);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		//return id, pw, name, tel은 XXXXX!
-		//return 뒤에는 반드시 여러 데이터를 묶어서 리턴해주어야 함.
-		//검색결과가 있을 때는 bag에 데이터가 들어있음. 
-		//검색결과가 없을 때는 bag에 무엇이 들어있나? null
+		// return id, pw, name, tel은 XXXXX!
+		// return 뒤에는 반드시 여러 데이터를 묶어서 리턴해주어야 함.
+		// 검색결과가 있을 때는 bag에 데이터가 들어있음.
+		// 검색결과가 없을 때는 bag에 무엇이 들어있나? null
 		return list;
-		
+
+	}
+
+	
+	// BookList -> 회원ID (bookOwner)로 검색하기
+	public ArrayList<BookVO> list2(String bookOwner) {
+		ResultSet rs = null; // 항목명 + 결과 데이터를 담고 있는 테이블
+
+		ArrayList<BookVO> list2 = new ArrayList<>();
+
+		BookVO bag = null;
+		try {
+			// 1.오라클 11g와 연결한 부품 설정
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			System.out.println("1. 오라클과 자바 연결할 부품 설정 성공.");
+			Locale.setDefault(Locale.US); // 맥 locale에러나신 분들만!!!
+
+			// 2.오라클 11g에 연결해보자.(java --- oracle)
+			String url = "jdbc:oracle:thin:@localhost:1523:xe";
+			String user = "system";
+			String password = "oracle";
+			Connection con = DriverManager.getConnection(url, user, password); // Connection
+			// String data = JOptionPane.showInputDialog("이름입력"); //String, 임아무개
+			System.out.println("2. 오라클 연결 성공.");
+
+			// 3. SQL문을 만든다.
+			// 자바는 부품조립식이어서, String에 넣은 문자열을 특정한 부품으로 인식하지 못함.
+			// 특정한 부품으로 인식하려면 그 부품으로 만들어주어야 한다.
+			// SQL부품으로 만들어주어야함.
+			// PrepareStatement가 SQL부품!!
+			String sql = "select * from hr.BOOK where BOOK_OWNER = ?";
+			PreparedStatement ps = con.prepareStatement(sql); // PreparedStatement
+			ps.setString(1, bookOwner);
+			
+			// 4. SQL문을 전송한다.
+			System.out.println("3. SQL문 부품(객체)으로 만들어주기 성공.");
+
+			rs = ps.executeQuery(); // select문 전송시
+			System.out.println("4. SQL문 오라클로 보내기 성공.");
+			while (rs.next()) { // 검색결과가 있는지 여부는 rs.next()
+				// true이면 있다라는 의미, false이면 없다라는 의미
+				// 1. 검색경로가가 있으면,
+				// 2. 각 컬럼에서 값들을 꺼내오자.
+				int bookId = rs.getInt(1);
+				String bookTitle = rs.getString(2);
+				String bookAuthor = rs.getString(3);
+				String bookOwner2 = rs.getString(4);
+
+				// 검색결과를 검색화면 UI부분을 주어야 함.
+				// 3. 가방을 만들자.
+				bag = new BookVO();
+
+				bag.setBookId(bookId);
+				bag.setBookTitle(bookTitle);
+				bag.setBookAuthor(bookAuthor);
+				bag.setBookOwner(bookOwner2);
+
+				// 4. list에 bag을 추가해주자.
+				list2.add(bag);
+			}
+
+			rs.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		// return id, pw, name, tel은 XXXXX!
+		// return 뒤에는 반드시 여러 데이터를 묶어서 리턴해주어야 함.
+		// 검색결과가 있을 때는 bag에 데이터가 들어있음.
+		// 검색결과가 없을 때는 bag에 무엇이 들어있나? null
+		return list2;
+	}
+
+	
+	// BookList -> 책 이름 (bookTitle)로 검색하기
+	public ArrayList<BookVO> list3(String bookTitle) {
+		ResultSet rs = null; // 항목명 + 결과 데이터를 담고 있는 테이블
+
+		ArrayList<BookVO> list3 = new ArrayList<>();
+
+		BookVO bag = null;
+		try {
+			// 1.오라클 11g와 연결한 부품 설정
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			System.out.println("1. 오라클과 자바 연결할 부품 설정 성공.");
+			Locale.setDefault(Locale.US); // 맥 locale에러나신 분들만!!!
+
+			// 2.오라클 11g에 연결해보자.(java --- oracle)
+			String url = "jdbc:oracle:thin:@localhost:1523:xe";
+			String user = "system";
+			String password = "oracle";
+			Connection con = DriverManager.getConnection(url, user, password); // Connection
+			// String data = JOptionPane.showInputDialog("이름입력"); //String, 임아무개
+			System.out.println("2. 오라클 연결 성공.");
+
+			// 3. SQL문을 만든다.
+			// 자바는 부품조립식이어서, String에 넣은 문자열을 특정한 부품으로 인식하지 못함.
+			// 특정한 부품으로 인식하려면 그 부품으로 만들어주어야 한다.
+			// SQL부품으로 만들어주어야함.
+			// PrepareStatement가 SQL부품!!
+			String sql = "select * from hr.BOOK where BOOK_TITLE = ?";
+			PreparedStatement ps = con.prepareStatement(sql); // PreparedStatement
+			ps.setString(1, bookTitle);
+			
+			// 4. SQL문을 전송한다.
+			System.out.println("3. SQL문 부품(객체)으로 만들어주기 성공.");
+			
+			rs = ps.executeQuery(); // select문 전송시
+			System.out.println("4. SQL문 오라클로 보내기 성공.");
+			while (rs.next()) { // 검색결과가 있는지 여부는 rs.next()
+				// true이면 있다라는 의미, false이면 없다라는 의미
+				// 1. 검색경로가가 있으면,
+				// 2. 각 컬럼에서 값들을 꺼내오자.
+				int bookId = rs.getInt(1);
+				String bookTitle2 = rs.getString(2);
+				String bookAuthor = rs.getString(3);
+				String bookOwner = rs.getString(4);
+
+				// 검색결과를 검색화면 UI부분을 주어야 함.
+				// 3. 가방을 만들자.
+				bag = new BookVO();
+
+				bag.setBookId(bookId);
+				bag.setBookTitle(bookTitle2);
+				bag.setBookAuthor(bookAuthor);
+				bag.setBookOwner(bookOwner);
+
+				// 4. list에 bag을 추가해주자.
+				list3.add(bag);
+			}
+
+			rs.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		// return id, pw, name, tel은 XXXXX!
+		// return 뒤에는 반드시 여러 데이터를 묶어서 리턴해주어야 함.
+		// 검색결과가 있을 때는 bag에 데이터가 들어있음.
+		// 검색결과가 없을 때는 bag에 무엇이 들어있나? null
+		return list3;
+	}
+	
+	
+	// BookList -> 저자명 (bookAuthor)로 검색하기
+	public ArrayList<BookVO> list4(String bookAuthor) {
+		ResultSet rs = null; // 항목명 + 결과 데이터를 담고 있는 테이블
+
+		ArrayList<BookVO> list4 = new ArrayList<>();
+
+		BookVO bag = null;
+		try {
+			// 1.오라클 11g와 연결한 부품 설정
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			System.out.println("1. 오라클과 자바 연결할 부품 설정 성공.");
+			Locale.setDefault(Locale.US); // 맥 locale에러나신 분들만!!!
+
+			// 2.오라클 11g에 연결해보자.(java --- oracle)
+			String url = "jdbc:oracle:thin:@localhost:1523:xe";
+			String user = "system";
+			String password = "oracle";
+			Connection con = DriverManager.getConnection(url, user, password); // Connection
+			// String data = JOptionPane.showInputDialog("이름입력"); //String, 임아무개
+			System.out.println("2. 오라클 연결 성공.");
+
+			// 3. SQL문을 만든다.
+			// 자바는 부품조립식이어서, String에 넣은 문자열을 특정한 부품으로 인식하지 못함.
+			// 특정한 부품으로 인식하려면 그 부품으로 만들어주어야 한다.
+			// SQL부품으로 만들어주어야함.
+			// PrepareStatement가 SQL부품!!
+			String sql = "select * from hr.BOOK where BOOK_AUTHOR = ?";
+			PreparedStatement ps = con.prepareStatement(sql); // PreparedStatement
+			ps.setString(1, bookAuthor);
+			
+			// 4. SQL문을 전송한다.
+			System.out.println("3. SQL문 부품(객체)으로 만들어주기 성공.");
+			
+			rs = ps.executeQuery(); // select문 전송시
+			System.out.println("4. SQL문 오라클로 보내기 성공.");
+			while (rs.next()) { // 검색결과가 있는지 여부는 rs.next()
+				// true이면 있다라는 의미, false이면 없다라는 의미
+				// 1. 검색경로가가 있으면,
+				// 2. 각 컬럼에서 값들을 꺼내오자.
+				int bookId = rs.getInt(1);
+				String bookTitle = rs.getString(2);
+				String bookAuthor2 = rs.getString(3);
+				String bookOwner = rs.getString(4);
+
+				// 검색결과를 검색화면 UI부분을 주어야 함.
+				// 3. 가방을 만들자.
+				bag = new BookVO();
+
+				bag.setBookId(bookId);
+				bag.setBookTitle(bookTitle);
+				bag.setBookAuthor(bookAuthor2);
+				bag.setBookOwner(bookOwner);
+
+				// 4. list에 bag을 추가해주자.
+				list4.add(bag);
+			}
+
+			rs.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		// return id, pw, name, tel은 XXXXX!
+		// return 뒤에는 반드시 여러 데이터를 묶어서 리턴해주어야 함.
+		// 검색결과가 있을 때는 bag에 데이터가 들어있음.
+		// 검색결과가 없을 때는 bag에 무엇이 들어있나? null
+		return list4;
 	}
 
 }

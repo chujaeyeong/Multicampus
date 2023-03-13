@@ -215,7 +215,7 @@ public class BookUI {
 			} // action
 		}); // b3
 
-		// 책 등록여부 검색
+		// 책ID로 책 등록여부 검색
 		b4.addActionListener(new ActionListener() {
 
 			@Override
@@ -242,7 +242,8 @@ public class BookUI {
 
 			}
 		});
-
+		
+		// 저장된 전체 책 리스트 보기
 		b5.addActionListener(new ActionListener() {
 
 			@Override
