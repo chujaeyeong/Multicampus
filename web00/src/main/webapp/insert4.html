@@ -8,7 +8,7 @@
 </script>
 <style type="text/css">
 body { /* 컨트롤 + / - 자동주석, 태그선택! */
-	background: #037BFC;
+	background: #cec5fa;
 }
 
 button {
@@ -17,7 +17,7 @@ button {
 
 .t1 { /* .은 클래스 선택!, 여러개선택!  */
 	background: yellow;
-	width: 150px;
+	width: 200px;
 	text-align: center;
 }
 
@@ -32,28 +32,36 @@ button {
 </head>
 <body>
 <!-- no, title, content, writer 게시판글쓰기  -->
-	<h3>게시판 글쓰기 페이지</h3>
+	<h2>영화 정보 페이지</h2>
 	<hr>
-	<a href="bbs.html">
+	<a href="movie.html">
 		<button id="b1">첫페이지로</button>
 	</a>
-	<form action="insert2.jsp">
+	<form action="insert4.jsp">
 		<table border="1">
 			<tr>
-				<td class="t1">제목 :</td>
+				<td class="t1">id :</td>
+				<td><input name="id"></td>
+			</tr>
+			<tr>
+				<td class="t1">title :</td>
 				<td><input name="title"></td>
 			</tr>
 			<tr>
-				<td class="t1">내용 :</td>
+				<td class="t1">content :</td>
 				<td><input name="content"></td>
 			</tr>
 			<tr>
-				<td class="t1">작성자명 :</td>
-				<td><input name="writer"></td>
+				<td class="t1">location :</td>
+				<td><input name="location"></td>
+			</tr>
+			<tr>
+				<td class="t1">director :</td>
+				<td><input name="director"></td>
 			</tr>
 			<tr>
 				<td colspan="2" class="t1">
-					<button id="b2">게시판 글쓰기 데이터 전송</button>
+					<button id="b2">영화정보 등록 데이터 전송</button>
 				</td>
 			</tr>
 		</table>

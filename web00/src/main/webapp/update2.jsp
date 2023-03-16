@@ -1,3 +1,5 @@
+<%@page import="multi.BbsDAO"%>
+<%@page import="multi.BbsVO"%>
 <%@page import="javax.net.ssl.HttpsURLConnection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -7,10 +9,19 @@
     //자바코드 넣는 부분!!
    	//HttpServletRequest request = new HttpServletRequest();
     //tomcat은 미리 reqeust를 만들어서 내장시켜놨어요! 
-    String no = request.getParameter("no"); //"apple"
-    String content = request.getParameter("content"); //"apple"
+    String no = request.getParameter("no"); 
+    String content = request.getParameter("content"); 
+    
+    // 1. 받은 데이터를 dao에게 주기 위해서 가방을 만들어서 넣자 
+    BbsVO bag = new BbsVO();
+    bag.setNo(Integer.parseInt(no));
+    bag.setContent(content);
+    
+    // 2. dao에게 가방을 전달하면서 insert해달라고 하자 
+    BbsDAO dao = new BbsDAO();
+    dao.update(bag);
     %>
-    <!-- 3. 브라우저에게 결과를 알려주기 위한 html코드가 미리 들어가 있음. -->
+
 <!DOCTYPE html>
 <html>
 <head>

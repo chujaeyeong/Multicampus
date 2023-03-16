@@ -8,7 +8,7 @@
 </script>
 <style type="text/css">
 body { /* 컨트롤 + / - 자동주석, 태그선택! */
-	background: #037BFC;
+	background: #fac5d6;
 }
 
 button {
@@ -32,28 +32,40 @@ button {
 </head>
 <body>
 <!-- no, title, content, writer 게시판글쓰기  -->
-	<h3>게시판 글쓰기 페이지</h3>
+	<h3>상품 등록 페이지</h3>
 	<hr>
-	<a href="bbs.html">
+	<a href="product.html">
 		<button id="b1">첫페이지로</button>
 	</a>
-	<form action="insert2.jsp">
+	<form action="insert3.jsp">
 		<table border="1">
 			<tr>
-				<td class="t1">제목 :</td>
-				<td><input name="title"></td>
+				<td class="t1">ID :</td>
+				<td><input name="id"></td>
 			</tr>
 			<tr>
-				<td class="t1">내용 :</td>
+				<td class="t1">name :</td>
+				<td><input name="name"></td>
+			</tr>
+			<tr>
+				<td class="t1">content :</td>
 				<td><input name="content"></td>
 			</tr>
 			<tr>
-				<td class="t1">작성자명 :</td>
-				<td><input name="writer"></td>
+				<td class="t1">price :</td>
+				<td><input name="price" type="number"></td>
+			</tr>
+			<tr>
+				<td class="t1">company :</td>
+				<td><input name="company"></td>
+			</tr>
+			<tr>
+				<td class="t1">img :</td>
+				<td><input name="img" type="file"></td>
 			</tr>
 			<tr>
 				<td colspan="2" class="t1">
-					<button id="b2">게시판 글쓰기 데이터 전송</button>
+					<button id="b2">상품 등록 데이터 전송</button>
 				</td>
 			</tr>
 		</table>

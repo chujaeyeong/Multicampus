@@ -1,3 +1,4 @@
+<%@page import="multi.BbsDAO"%>
 <%@page import="javax.net.ssl.HttpsURLConnection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -8,6 +9,11 @@
    	//HttpServletRequest request = new HttpServletRequest();
     //tomcat은 미리 reqeust를 만들어서 내장시켜놨어요! 
     String no = request.getParameter("no"); // 외부에서 입력한 값은 숫자여도 몽땅 다 String 
+    
+    // VO => X
+    // dao에게 no를 주면서 삭제해달라고 요청 
+    BbsDAO dao = new BbsDAO();
+    dao.delete(Integer.parseInt(no));
     %>
     <!-- 3. 브라우저에게 결과를 알려주기 위한 html코드가 미리 들어가 있음. -->
 <!DOCTYPE html>
@@ -24,6 +30,6 @@ body {
 <body>
 게시물 삭제 요청되었음.
 <hr color = "red">
-탈퇴요청한 게시물 번호 : <%= no %> <br>
+삭제요청한 게시물 번호 : <%= no %> <br>
 </body>
 </html>
