@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>메일 수정 페이지</title>
+<script type="text/javascript">
+/* 	alert('게시글 정보 수정페이지입니다. ') */
+</script>
+<style type="text/css">
+body {
+	background: #faf3e1;
+}
+
+button {
+	background: pink;
+}
+
+.t1 { /* .은 클래스 선택!, 여러개선택!  */
+	background: yellow;
+	width: 350px;
+	text-align: center;
+}
+
+#b1 { /* #은 아이디 선택!, 특정한 것 한 개만 선택! */
+	color: red;
+}
+#b2{
+	color: blue;
+	
+}
+</style>
+</head>
+<body>
+	<h3>메일 수정페이지</h3>
+	<hr>
+	<a href="mail.html">
+		<button id="b1">첫페이지로</button>
+	</a>
+	<form action="update5.jsp">
+		<table border="1">
+			<tr>
+				<td class="t1">수정을 원하는 mail no :</td>
+				<td><input name="mailno"></td>
+			</tr>
+			<tr>
+				<td class="t1">수정을 원하는 mail 내용 :</td>
+				<td><input name="content"></td>
+			</tr>
+			<tr>
+				<td colspan="2" class="t1">
+					<button id="b2">메일 수정 데이터 전송</button>
+				</td>
+			</tr>
+		</table>
+		<!-- 입력한 값들이 서버(톰킷)으로 전달될때는 form태그 안에 있어야 함. -->
+		<!-- 보충내용: <input name="data"> -->
+	</form>
+
+	
+	<!-- http://localhost:8898/web00/insert.jsp?id=dddd&pw=ddd&name=ddd&tel=ddddd -->
+
+	
+</body>
+</html>

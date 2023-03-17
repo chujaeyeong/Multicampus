@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>메일 보내기 취소 페이지</title>
+<style type="text/css">
+body { /* 컨트롤 + / - 자동주석, 태그선택! */
+	background: #faf3e1;
+}
+
+button {
+	background: #18DE02;
+}
+
+.t1 { /* .은 클래스 선택!, 여러개선택!  */
+	background: yellow;
+	width: 300px;
+	text-align: center;
+}
+</style>
+</head>
+<body>
+<h3>메일 보내기 취소 페이지</h3>	
+<hr>
+<a href="mail.html">
+	<button id="b1">첫페이지로</button>
+</a>
+<form action="delete5.jsp">
+<!-- http://localhost:8888/web00/delete2.jsp?no=100 -->
+<table border="1">
+			<tr>
+				<td class="t1">삭제할 mail no :</td>
+				<td><input name="mailno"></td>
+			</tr>
+			<tr>
+				<td colspan="2" class="t1">
+					<button id="b2">메일 보내기 취소를 위한 mail no 데이터 전송</button>
+				</td>
+			</tr>
+		</table>
+
+</form>
+</body>
+</html>
