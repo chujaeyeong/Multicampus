@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	version="3.1">
+	<display-name>web01</display-name>
+
+	<!-- //@WebServlet("/Test") -->
+
+	<servlet>
+		<servlet-name>mon</servlet-name>
+		<servlet-class>multi.Monday</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>mon</servlet-name>
+		<url-pattern>/mon</url-pattern>
+	</servlet-mapping>
+
+
+	<welcome-file-list>
+		<welcome-file>main.html</welcome-file>
+		<welcome-file>main.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>
