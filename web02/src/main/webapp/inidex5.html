@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="css/out.css">
+
+<script type="text/javascript">
+	function check() {
+		idValue = document.getElementById("user").value
+		// alert(idValue.length)
+		divTag = document.getElementById("result")
+		if (idValue.length >= 5) {
+			divTag.innerHTML = "<img src=img/yes.jpg width=500 height=300>"
+		} else {
+			divTag.innerHTML = "<img src=img/no.jpg width=500 height=300>"
+		}
+	}
+	
+	function same() {
+		pw1Value = document.getElementById("pw1").value
+		pw2Value = document.getElementById("pw2").value
+		if (pw1Value == pw2Value) {
+			// divTag.innerHTML = "<img src=img/yes.jpg width=500 height=300>"
+			// location은 브라우저의 주소부분을 나타내는 내장된 객체 
+			// location의 href라는 변수에 요청하고 싶은 주소를 넣어주면 
+			// 자바스크립트의 브라우저의 주소 + 엔터까지 쳐서 그 주소로 넘겨주는 기능을 해줌 
+			location.href = "http://www.naver.com"
+		} else {
+			// divTag.innerHTML = "<img src=img/no.jpg width=500 height=300>"
+			location.href = "http://www.daum.net"
+		}
+	}
+</script>
+
+</head>
+<body>
+	아이디 입력 :
+	<input id='user' value='root'>
+	<br>
+	<button onclick="check()">글자수체크</button>
+
+	<hr>
+
+	패스워드 :
+	<input id='pw1' value='1234'>
+	<br>
+	패스워드2 :
+	<input id='pw2' value='1234'>
+	<br>
+	<button onclick="same()">패스워드 동일체크</button>
+
+	<hr>
+
+	가로길이 :
+	<input id='w' value='11.11'>
+	<br> 세로길이 :
+	<input id='h' value='22.22'>
+	<br>
+	<button onclick="rec()">사각형 넓이</button>
+<hr color = "red">
+<div id="result" style="color:red; background: yellow; width: 500px; height: 50px; font-size: 30px">결과넣는 곳.</div>
+
+</body>
+</html>
