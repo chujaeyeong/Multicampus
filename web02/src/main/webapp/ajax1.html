@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-3.6.4.js"></script>
+<script type="text/javascript">
+	// 시작하자마자 통신해보자 ==> ajax 실행하기 
+	$(function() {
+		$.ajax({
+			url : "index.html",
+			success : function() {
+				alert("성공했습니다!")	
+			}
+		})
+		
+		$.ajax({
+			url : "index11.html",
+			success : function() {
+				alert("성공222!!!")	
+			}
+		})
+	})
+</script>
+</head>
+<body>
+
+</body>
+</html>
