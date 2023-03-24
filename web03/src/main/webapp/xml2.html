@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="js/jquery-3.6.4.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("#b1").click(function() {
+			$.ajax({
+				url : "data/meeting.xml",
+				success : function(doc) {
+					alert("회의 참석자 불러오기 성공 : " + doc)
+					list = $(doc).find("record")
+					alert("총 참석자는 " + list.length + "명 입니다. ")
+					for (i = 0; i < list.length; i++) {
+						rank = $(list[i]).find('rank').text()
+						name = $(list[i]).find('name').text()
+						phone = $(list[i]).find('phone').text()
+						boolean = $(list[i]).find('boolean').text()
+						time = $(list[i]).find('time').text()
+						$('#result').append(rank + ", " 
+											+ name + ", " 
+											+ phone + ", " 
+											+ boolean + ", " 
+											+ time + ", " 
+											+ "<br>")
+						$.ajax({
+							url: "meeting.jsp",
+							data : {
+								rank : rank,
+								name : name,
+								phone : phone,
+								boolean2 : boolean,
+								time : time,
+							}, 
+							success: function() {
+								console.log('회의 참석자 명단 넣기 완료')
+							} //success
+						}) //ajax
+					} // for
+				} //success
+			}) // ajax
+		}) // b1
+	}) // $
+
+
+</script>
+</head>
+<body>
+	<br>
+	<button id="b1" class="btn btn-outline-primary">회의 참석자 불러오기</button>
+	<hr color="blue">
+	<div id="result">참석자 명단 나오는 곳</div>
+</body>
+</html>

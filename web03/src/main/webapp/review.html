@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-3.6.4.js"></script>
+<script type="text/javascript">
+	$(function() { //body부터ram에 tree구조를 가지면서 읽어와라! 다 되면 function()실행해주세요.
+		$('#b1').click(function() { //아이디가 b1인 tree내의 노드를 찾아서 선택해라(태그선택)
+		//선택한 button태그에 click이벤트를 설정, click를 할 때를 기다렸다가 입력값으로 넣은
+		//이름없는 함수(익명함수)를 실행해주세요. 
+		//<a href="won.jsp?won=10000">10000원 달러로</a>
+		//location.href = "won.jsp?won=10000"
+			$.ajax({
+				url: "won.jsp",
+				data: {
+					won : $('#won').val()
+				}, 
+				success: function(x) {
+					alert(x)
+				} //success
+			});
+		}) //b1
+		$('#b2').click(function() { //아이디가 b1인 tree내의 노드를 찾아서 선택해라(태그선택)
+			$.ajax({
+				url: "dollar.jsp",
+				data: {
+					dollar : $('#dollar').val()
+				}, 
+				success: function(x) {
+					alert(x)
+				} //success
+			});
+		}) //b1
+	}) //$
+</script>
+</head>
+<body bgcolor="lime">
+<h3>비동기통신으로 서버와 통신하기</h3>
+원화를 달러로:
+<input type="text" id="won" value="10000">
+<button style='color: blue; background: green' id ="b1">원화를 달러로</button>
+<hr color="red">
+달러를 원화로:
+<input type="text" id="dollar" value="15" >
+<button style='color: blue; background: yellow' id ="b2">달러를 원화로</button>
+<hr color="green">
+<div id="result"></div>
+</body>
+</html>
