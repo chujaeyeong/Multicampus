@@ -7,17 +7,13 @@
 <title>Insert title here</title>
 <style>
 body {
-	background: orange;
+	background: yellow;
 }
 
 </style>
 </head>
 <body>
-<h2>게시판 글 검색 처리 요청이 완료되었습니다.</h2> 
-<hr color="red">
-${bag.no} <br>
-${bag.title} <br>
-${bag.content} <br>
-${bag.writer} <br>
+<h2>로그인처리 성공! </h2> <br>
+<img src="resources/img/yes.jpg" width="250" height="250">
 </body>
 </html>

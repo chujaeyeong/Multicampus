@@ -5,19 +5,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-body {
-	background: orange;
-}
-
-</style>
 </head>
 <body>
-<h2>게시판 글 검색 처리 요청이 완료되었습니다.</h2> 
+
+<h3>영화 장르 선택화면입니다. </h3>
 <hr color="red">
-${bag.no} <br>
-${bag.title} <br>
-${bag.content} <br>
-${bag.writer} <br>
+<form action="movie" method="get">
+	영화 장르 : <input name="movie" value="드라마"><br>
+	<button type="submit">서버로 전송</button>
+</form>
 </body>
 </html>

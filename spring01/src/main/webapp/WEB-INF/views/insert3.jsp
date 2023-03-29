@@ -7,17 +7,12 @@
 <title>Insert title here</title>
 <style>
 body {
-	background: orange;
+	background: #ceffc7;
 }
 
 </style>
 </head>
 <body>
-<h2>게시판 글 검색 처리 요청이 완료되었습니다.</h2> 
-<hr color="red">
-${bag.no} <br>
-${bag.title} <br>
-${bag.content} <br>
-${bag.writer} <br>
+<h2>북마크가 저장되었습니다. </h2>
 </body>
 </html>
