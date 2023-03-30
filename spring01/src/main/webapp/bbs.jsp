@@ -12,7 +12,8 @@ body {
 </style>
 </head>
 <body>
-<h3>게시판 화면입니다. </h3>
+<h3>게시판 화면입니다. </h3><br>
+<a href="list2.multi">게시판 전체 게시물 검색하기</a>
 <hr color="green">
 <form action="insert2.multi" method="get">
 	no : <input name="no" value="001"><br>

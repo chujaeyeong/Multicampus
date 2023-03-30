@@ -11,6 +11,7 @@
 <hr color="red">
 
 <h3>검색 화면입니다. </h3>
+<a href = "list">모든 회원정보 가지고 오기</a>
 <hr color="red">
 <form action="one" method="get">
 	id : <input name="id" value="apple"><br>

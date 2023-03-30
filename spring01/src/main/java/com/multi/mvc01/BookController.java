@@ -1,5 +1,7 @@
 package com.multi.mvc01;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,7 +30,13 @@ public class BookController {
 		BookDTO bag = dao.one(id); // bag에 검색결과가 들어있을거임. 
 		model.addAttribute("bag", bag);
 		// views까지 전달 할 속성으로 추가해주세요.
-
 	}
+	
+	@RequestMapping("list3.multi")
+	public void list(Model model) {
+		ArrayList<BookDTO> list = dao.list();
+		model.addAttribute("list", list);
+	}
+	
 
 }

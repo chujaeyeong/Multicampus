@@ -1,5 +1,7 @@
 package com.multi.mvc01;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -61,9 +63,10 @@ public class BbsController {
 		model.addAttribute("bag", bag);
 	}
 	
-	@RequestMapping("list2")
-	public void list() {
-		
+	@RequestMapping("list2.multi")
+	public void list(Model model) {
+		ArrayList<BbsVO> list = dao.list();
+		model.addAttribute("list", list);
 	}
 	
 	//https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query=%EC%9E%90%EB%8F%99%EC%B0%A8

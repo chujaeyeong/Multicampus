@@ -14,6 +14,9 @@ body {
 </head>
 <body>
 <h4>book 페이지입니다. </h4>
+<h5>
+	<a href="list3.multi">전체 book 리스트 불러오기</a>
+</h5>
 <hr color="green">
 
 <h2>book 글쓰기</h2>
