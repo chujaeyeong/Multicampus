@@ -13,7 +13,7 @@ body {
 </style>
 </head>
 <body>
-<h2>로그인처리 성공! </h2> <br>
+<h2>${id}님! 로그인처리 성공! </h2> <br>
 <img src="resources/img/yes.jpg" width="250" height="250">
 </body>
 </html>
