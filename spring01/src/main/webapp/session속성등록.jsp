@@ -8,9 +8,10 @@
 </head>
 <body>
 <%
-	session.setAttribute("view", 0);
+	session.setAttribute("count", 0);
+	session.setAttribute("user", "root");
 %>
 <hr>서버에 세션 속성 등록함. 
-<a href="page04.jsp">session속성가지고오기.jsp</a>
+<a href="session속성가지고오기.jsp">session속성가지고오기.jsp</a>
 </body>
 </html>

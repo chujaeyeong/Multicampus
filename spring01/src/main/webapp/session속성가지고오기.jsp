@@ -7,10 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%
-	session.setAttribute("view", 0);
-%>
-<hr>서버에 세션 속성 등록함. 
-<a href="page04.jsp">session속성가지고오기.jsp</a>
+로그인한 사람의 id는 <%= session.getAttribute("user") %> <br>
+오늘 방문횟수는 <%=session.getAttribute("count") %>번
+<hr color="blue">
 </body>
 </html>
