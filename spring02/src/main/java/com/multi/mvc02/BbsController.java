@@ -63,10 +63,43 @@ public class BbsController {
 		model.addAttribute("list", list);
 	}
 	
+	@RequestMapping("list5") // ajax
+	public void list5(Model model) {
+		ArrayList<BbsVO> list = dao.list();
+		System.out.println(list.size()); //사이즈를 찍어보세요.
+		model.addAttribute("list", list);
+	}
+	
+	@RequestMapping("one6")
+	public void one6(int no, Model model) {
+		System.out.println("one요청됨.");
+		System.out.println(no);
+		BbsVO bag = dao.one(no);
+		//검색결과가 있는지 프린트!
+		System.out.println(bag);
+		ArrayList<ReplyVO> list = dao2.list(no);
+		model.addAttribute("list", list);
+		model.addAttribute("bag", bag);
+	}
+	
 	//https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query=%EC%9E%90%EB%8F%99%EC%B0%A8
 	
 	
+	@RequestMapping("update5")
+	public void update5(BbsVO bag, Model model) {
+		System.out.println("update요청됨.");
+		System.out.println(bag);	
+		dao.update(bag);
+		model.addAttribute("bag", bag);
+	}
 	
+	@RequestMapping("delete5")
+	public void delete5(int no, Model model) {
+		System.out.println("delete요청됨.");
+		System.out.println(no);
+		dao.delete(no);
+		model.addAttribute("no", no);
+	}
 	
 	
 }
