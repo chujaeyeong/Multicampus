@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller //스프링에서 제어하는 역할로 등록! 
 public class MemberController {
@@ -86,11 +87,28 @@ public class MemberController {
 		// views까지 전달할 속성으로 추가해주세요. 
 	}
 	
+	@RequestMapping("one0405")
+	@ResponseBody
+	public MemberVO one0405(String id, Model model) {
+		System.out.println("one요청됨.");
+		System.out.println(id);
+		MemberVO bag = dao.one(id);
+		
+		return bag;
+	}
+	
 	@RequestMapping("list")
 	public void list(Model model) {
 		// Model은 컨트롤러의 list를 view/list.jsp까지만 전달할 수 있는 객체 
 		ArrayList<MemberVO> list = dao.list();
 		model.addAttribute("list", list);
+	}
+	
+	@RequestMapping("list0405")
+	@ResponseBody
+	public ArrayList<MemberVO> list040501() {
+	    ArrayList<MemberVO> list = dao.list();
+	    return list;
 	}
 	
 	@RequestMapping("one5")
