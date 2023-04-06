@@ -87,28 +87,13 @@ public class MemberController {
 		// views까지 전달할 속성으로 추가해주세요. 
 	}
 	
-	@RequestMapping("one0405")
-	@ResponseBody
-	public MemberVO one0405(String id, Model model) {
-		System.out.println("one요청됨.");
-		System.out.println(id);
-		MemberVO bag = dao.one(id);
-		
-		return bag;
-	}
+
 	
 	@RequestMapping("list")
 	public void list(Model model) {
 		// Model은 컨트롤러의 list를 view/list.jsp까지만 전달할 수 있는 객체 
 		ArrayList<MemberVO> list = dao.list();
 		model.addAttribute("list", list);
-	}
-	
-	@RequestMapping("list0405")
-	@ResponseBody
-	public ArrayList<MemberVO> list040501() {
-	    ArrayList<MemberVO> list = dao.list();
-	    return list;
 	}
 	
 	@RequestMapping("one5")
@@ -129,6 +114,24 @@ public class MemberController {
 		ArrayList<MemberVO> list = dao.list();
 		model.addAttribute("list", list);
 	}
+	
+	@RequestMapping("one0405")
+	@ResponseBody
+	public MemberVO one0405(String id, Model model) {
+		System.out.println("one요청됨.");
+		System.out.println(id);
+		MemberVO bag = dao.one(id);
+		
+		return bag;
+	}
+	
+	@RequestMapping("list0405")
+	@ResponseBody
+	public ArrayList<MemberVO> list040501() {
+	    ArrayList<MemberVO> list = dao.list();
+	    return list;
+	}
+	
 	
 	//https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query=%EC%9E%90%EB%8F%99%EC%B0%A8
 	

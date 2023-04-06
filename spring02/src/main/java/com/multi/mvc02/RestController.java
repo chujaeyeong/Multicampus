@@ -3,6 +3,7 @@ package com.multi.mvc02;
 import java.util.ArrayList;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -68,5 +69,42 @@ public class RestController {
 		
 		return list;  
 	}
+	
+	
+	@RequestMapping("jsonResponse5")
+	@ResponseBody // 요청을 받으면 return되는 데이터를 json으로 만들어서 요청하는 곳으로 다시 보냄,
+	public MapVO kakaoMap() {
+		MapVO bag = new MapVO();
+		bag.setLat(37.5117);
+		bag.setLon(127.0592);
+		
+		System.out.println(bag);
+		return bag;
+	}
+	
+	@RequestMapping("jsonResponse6")
+	@ResponseBody
+	public ArrayList<ChartVO> json6() {
+		ArrayList<ChartVO> list = new ArrayList<ChartVO>();
+		
+		ChartVO vo = new ChartVO();
+		vo.setWork("study!");
+		vo.setTime(10);
+		list.add(vo);
+		
+		ChartVO vo2 = new ChartVO();
+		vo2.setWork("run!");
+		vo2.setTime(5);
+		list.add(vo2);
+		
+		ChartVO vo3 = new ChartVO();
+		vo3.setWork("eat!");
+		vo3.setTime(7);
+		list.add(vo3);
+		
+		return list;
+	}
+	
+	
 	
 }

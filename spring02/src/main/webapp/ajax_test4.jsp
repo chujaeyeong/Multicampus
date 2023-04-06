@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script type="text/javascript" src="resources/js/jquery-3.6.4.js"></script>
 <script type="text/javascript">
 	$(function() {
 		$('#b1').click(function() {
@@ -73,12 +73,45 @@
 		        } // success
 		    }); // ajax
 		}); // b22
+		
+		$('#b3').click(function() {
+			$.ajax({
+				url : "jsonResponse5",
+				dataType : "json",
+				success : function(json) {
+					lat = json.lat
+					lon = json.lon
+
+					var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+					mapOption = {
+						center : new kakao.maps.LatLng(lat,lon), // 지도의 중심좌표
+						level : 3
+					// 지도의 확대 레벨
+					};
+
+					var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+					// 마커가 표시될 위치입니다 
+					var markerPosition = new kakao.maps.LatLng(lat, lon);
+
+					// 마커를 생성합니다
+					var marker = new kakao.maps.Marker({
+						position : markerPosition
+					});
+
+					// 마커가 지도 위에 표시되도록 설정합니다
+					marker.setMap(map);
+				} //success
+			}) //ajax
+		})//b3
+		
 
 	})//$
 </script>
 
 </head>
 <body>
+
 	<h2>심화 REST 정리 문제</h2>
 
 	<hr color="green">
@@ -95,7 +128,7 @@
 
 	<hr color="green">
 
-	<button id="b3">코엑스 지도 보기</button>
+	<!-- <button id="b3">코엑스 지도 보기 1</button> -->
 	<br>
 
 	<hr color="green">
