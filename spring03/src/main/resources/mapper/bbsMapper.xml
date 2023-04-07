@@ -3,16 +3,20 @@
 <mapper namespace="bbs">
 	
 	<insert id="create" parameterType="bbsVO">
-		insert into bbs values (#{no}, #{title}, #{content}, #{writer})
+		insert into bbs values (null, #{title}, #{content}, #{writer})
 	</insert>
 	
-	<delete id="del"  parameterType="bbsVO">
-		delete from bbs where id = #{no}
+	<delete id="delete" parameterType="bbsVO">
+		delete from bbs where no = #{no}
 	</delete>
 	
-	<update id="up"  parameterType="bbsVO">
+	<update id="update" parameterType="bbsVO">
 		update bbs set content = #{content} where no = #{no}
 	</update>
+	
+	<select id="one" parameterType="int" resultType="bbsVO">
+		select * from bbs where no = #{no}
+	</select>
 	
 </mapper>
 

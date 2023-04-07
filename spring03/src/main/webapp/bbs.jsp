@@ -44,6 +44,7 @@
 <a href="list2">모든 게시판 리스트 가지고 오기</a>
 <hr color="red">
 <a href="one2.multi?no=30">30번 검색</a>
+
 <form action="one2.multi" method="get">
 no : <input name="no" value="30"><br>
 	<button type="submit">서버로 전송</button>

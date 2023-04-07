@@ -35,10 +35,11 @@ public class MemberDAO3 {
 //
 //	}
 //
-//	public MemberVO one(String id) {
-//		return bag;
-//	}
-//
+	public MemberVO one(String id) {
+		MemberVO bag = my.selectOne("member.one", id);
+		return bag;
+	}
+
 	public int delete(String id) {
 		int result = my.delete("member.del", id);
 		return result;
