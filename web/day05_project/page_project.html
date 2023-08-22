@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function pay() {
+           money = document.getElementById('money').value 
+           people = document.getElementById('people').value 
+          
+           money2 = parseInt(money)
+           people2 = parseInt(people)
+
+           result = money2 / people2
+
+           text = "1인당 " + result + "원을 내면 됩니다."
+
+           result_tag = document.getElementById('result')
+           result_tag.innerHTML = text
+        }
+    </script>
+</head>
+<body>
+    <h1>밥값 얼마로 나누면 될까?</h1><br>
+    밥값 총액: <input type="text" value="10000" id="money"><br>
+    인원: <input type="text" value="1"  id="people"> <br>
+    <button onclick="pay()">얼마를 내면 될까요?</button>
+    <br>
+    <br>
+    <h1>후식 먹으러 가자!</h1>
+    <table border="1">
+        <tr>
+            <td>커피</td>
+            <td><button>지도보기</button></td>
+        </tr>
+        <tr>
+            <td>푸딩</td>
+            <td><button>지도보기</button></td>
+        </tr>
+        <tr>
+            <td>아이스크림</td>
+            <td><button>지도보기</button></td>
+        </tr>
+    </table>
+
+
+
+    <div id="result">
+
+    </div>
+
+    <div id="result2">
+
+    </div>
+
+</body>
+</html>

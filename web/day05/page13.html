@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>jQuery UI Accordion - Default functionality</title>
+   
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+      $(function () {
+        //b1을 클릭했을 때 오른쪽에 있는 함수 내용을 실행해주세요!
+        $('#b1').click(function() {
+          //alert('b1클릭함.')
+          $.ajax({
+            url: "ok.html",
+            success : function(x) {
+              // document.getElementById('b3') == $('b3') 길게 쓰기 싫어서 달러로 줄여버리기
+              $('#d1').html(x)
+            }
+          })
+        }) //b1
+
+        // jason 은 {이름:값, 이름:값, 이름:값} 이런 식으로 쓰는데
+        // 헷갈리니까 한줄에 이름:값 하나씩만 씀
+        $('#b2').click(function() {
+          $.ajax({
+            url: "weather.html",
+            success : function(x) {
+              $('#d2').html(x)
+            }
+          })
+        }) //b2
+        $('#b3').click(function() {
+          $.ajax({
+            url: "tour.html",
+            success : function(x) {
+              $('#d3').html(x)
+            }
+          })
+        }) //b3
+      }); // $
+    </script>
+  </head>
+  <body>
+   <button id="b2">기상청정보 받아오기</button>
+   <button id="b3">여행정보 받아오기</button>
+   <button id="b1">AjaxTest 받아오기</button>
+   <hr>
+   <div id="d1" style="width: 400px; height: 100px; background: lime;"></div>
+   <div id="d2" style="width: 400px; height: 100px; background: yellow;"></div>
+   <div id="d3" style="width: 400px; height: 100px; background: pink;"></div>
+  </body>
+</html>
+
