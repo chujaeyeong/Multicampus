@@ -1,0 +1,36 @@
+
+<%@page import="multi.MailDAO"%>
+<%@page import="javax.net.ssl.HttpsURLConnection"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <!-- 브라우저가 보낸 데이터를 받아야 함.==> 자바로 짜야함. -->
+    <!-- 브라우저가 보낸 데이터를 받을 때 사용하는 부품 필요함. -->
+    <% // 스크립트릿 - 조금 코드를 써서 만드는 작은 프로그램 
+    //자바코드 넣는 부분!!
+   	//HttpServletRequest request = new HttpServletRequest();
+    //tomcat은 미리 reqeust를 만들어서 내장시켜놨어요! 
+    String mailno = request.getParameter("mailno"); // 외부에서 입력한 값은 숫자여도 몽땅 다 String 
+    
+    // VO => X
+    // dao에게 no를 주면서 삭제해달라고 요청 
+    MailDAO dao = new MailDAO();
+    dao.delete(mailno);
+    %>
+    <!-- 3. 브라우저에게 결과를 알려주기 위한 html코드가 미리 들어가 있음. -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>메일 보내기 취소 결과</title>
+<style type="text/css">
+body {
+	background: #faf3e1;
+}
+</style>
+</head>
+<body>
+<h2>메일 보내기 취소 요청되었음. </h2>
+<hr color = "red">
+취소 요청한 mail no: <%= mailno %> <br>
+</body>
+</html>

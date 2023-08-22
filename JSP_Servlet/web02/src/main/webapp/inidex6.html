@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+	function me() {
+		//total = "멀티회사에 팀장으로 있는 홍길동입니다."
+		name = document.getElementById("name").value
+		com = document.getElementById("com").value
+		level = document.getElementById("level").value
+		gender = document.getElementById("gender").value
+		total = com + "회사에 " + level + "으로 있는 " + name + "입니다."
+		if(gender == '남자'){
+			total = total + "<img src=img/man.png>"
+		}else{
+			total = total + "<img src=img/woman.png>"
+		}
+		divTag = document.getElementById("result")
+		divTag.innerHTML = total
+		
+	}
+</script>
+
+</head>
+<body>
+	이름 입력 : <input id='name' value='홍길동'><br>
+	회사명 입력 : <input id='com' value='멀티'><br>
+	직책 입력 : <input id='level' value='팀장'><br>
+	성별 입력 : <input id='gender' value='남자'><br>
+	<button onclick="me()">확인</button>
+
+	<hr>
+
+	<div id="result"
+		style="color: red; background: yellow; width: 500px; height: 50px; font-size: 30px">결과넣는
+		곳.</div>
+
+</body>
+</html>

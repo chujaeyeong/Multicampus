@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-3.6.4.js"></script>
+<script type="text/javascript">
+	$(function() { 
+		$('#b1').click(function() {
+			$("#result").empty() // 기존에 result에 있었던 내용을 다 지우고 새 값을 출력 
+			$.ajax({
+				url: "data/rank.json",
+				success: function(doc) {
+					list = doc.rank
+					alert(list.length)
+					for (i = 0; i < list.length; i++) {
+						n = list[i].name
+						t = list[i].tel
+						$("#result").append(n + ", " + t + "<br>")
+					}
+				}
+			})
+		})
+		
+		$('#b2').click(function() {
+			$("#result").empty() // 기존에 result에 있었던 내용을 다 지우고 새 값을 출력 
+			$.ajax({
+				url: "data/MOCK_DATA.json",
+				success: function(doc) {
+					list = doc
+					alert(list.length)
+					for (i = 0; i < list.length; i++) {
+						id = list[i].id
+						email = list[i].email
+						$("#result").append(id + ", " + email + "<br>")
+					}
+				}
+			})
+		}) //b2 
+		
+		$('#b3').click(function() {
+			$("#result").empty() // 기존에 result에 있었던 내용을 다 지우고 새 값을 출력 
+			$.ajax({
+				url: "https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frss.hankyung.com%2Ffeed%2Fhei.xml&api_key=z1gau0agjrbyikpzu9wtqtwljs4um84maffv1vms",
+				success: function(doc) {
+					alert("성공!" + doc)
+					list = doc.items
+					alert(list.length)
+					for (i = 0; i < list.length; i++) {
+						// console.log(list[i].title)
+						t = list[i].title
+						l = list[i].link
+						p = list[i].pubDate
+						a = list[i].author
+						$("#result").append(
+								"<a href=" + l + ">" + t + "</a>" + 
+								p + " " + a + "<br>")
+					}
+				}
+			})
+		}) //b3
+		
+	}) //$
+</script>
+</head>
+<body bgcolor="pink">
+<button style='color: blue; background: pink' id ="b1">JSON받아오기-1</button>
+<button style='color: blue; background: yellow' id ="b2">JSON받아오기-2</button>
+<button style='color: white; background: green' id ="b3">JSON받아오기-3</button>
+<hr color="red">
+<div id="result"></div>
+</body>
+</html>
